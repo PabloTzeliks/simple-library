@@ -97,3 +97,7 @@ This README represents the initial version of the project. As development progre
 ---
 
 *This project is part of an APIs programming course focusing on modularization concepts.*
+
+## Author
+
+**Pablo Tzeliks** ([@PabloTzeliks](https://github.com/PabloTzeliks))
