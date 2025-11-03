@@ -46,11 +46,11 @@ This project introduces key modularization principles:
 ```
 simple-library/
 ├── src/
-│   ├── model/          # Data models (Book, Author, User, etc.)
-│   ├── dao/            # Data Access Objects for database operations
-│   ├── service/        # Business logic layer
-│   ├── util/           # Utility classes (DB connection, helpers)
-│   └── main/           # Application entry point
+│   ├── model/             # Data models
+│   ├── service/           # Business logic layer
+│   ├── view/              # Presentation, interact directly with the user
+│   ├── infraestructure/   # Infra, abstract the persistency
+│   └── main/              # Application entry point
 └── README.md
 ```
 
