@@ -12,7 +12,7 @@ public class LivroRepository {
     public void save(Livro livro) throws SQLException {
 
         String queryInsereLivro = """
-                INSERT INTO Livro titulo, autor, ano, disponivel VALUES (?, ?, ?);
+                INSERT INTO livros (titulo, autor, ano, disponivel) VALUES (?, ?, ?, ?);
                 """;
 
         try (Connection conn = Conexao.conexao();

@@ -6,17 +6,16 @@ import pablo.tzeliks.view.helper.InputHelper;
 import pablo.tzeliks.view.helper.MenuHelper;
 import pablo.tzeliks.view.menu.MenuCadastroLivro;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class BibliotecaView {
 
-    private EmprestimoService service;
+    private EmprestimoService emprestimoService;
     private LivroService livroService;
     private Scanner sc;
 
-    public void BibliotecaView(EmprestimoService service, LivroService livroService) {
-        this.service = service;
+    public BibliotecaView(LivroService livroService) {
+        // this.emprestimoService = emprestimoService;
         this.livroService = livroService;
         this.sc = new Scanner(System.in);
     }
@@ -27,7 +26,7 @@ public class BibliotecaView {
         do {
 
             MenuHelper.menuPrincipal();
-            opcao = InputHelper.lerString(sc, "Digite a opção desejada: ");
+            opcao = InputHelper.lerString(sc, "\nDigite a opção desejada: ");
 
             switch (opcao) {
 
