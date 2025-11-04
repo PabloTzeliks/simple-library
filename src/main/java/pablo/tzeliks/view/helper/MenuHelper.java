@@ -18,4 +18,12 @@ public class MenuHelper {
         System.out.println("\n4- Listar Livros");
         System.out.println("\n5- Listar Emprestimos");
     }
+
+    public static void menuCadastroLivro() {
+
+        espacador();
+
+        System.out.println("=== MENU CADASTRO LIVRO ===");
+        System.out.println();
+    }
 }
