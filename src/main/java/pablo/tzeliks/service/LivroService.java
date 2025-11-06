@@ -5,6 +5,7 @@ import pablo.tzeliks.model.Livro;
 import pablo.tzeliks.view.helper.MensagemHelper;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class LivroService {
@@ -25,5 +26,25 @@ public class LivroService {
 
             e.printStackTrace();
         }
+    }
+
+    public List<Livro> listarLivros() {
+
+        try {
+            List<Livro> livros = repository.list();
+
+            if(livros.isEmpty()) {
+                MensagemHelper.erro("Nenhum livro encontrado!");
+            }
+
+            return livros;
+        } catch (SQLException e) {
+
+            MensagemHelper.erro("Erro ao listar os livros, observe: " + e.getMessage());
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

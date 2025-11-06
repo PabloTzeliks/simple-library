@@ -26,4 +26,20 @@ public class MenuHelper {
         System.out.println("=== MENU CADASTRO LIVRO ===");
         System.out.println();
     }
+
+    public static void menuEmprestimoLivro() {
+
+        espacador();
+
+        System.out.println("=== MENU EMPRÉSTIMO LIVRO ===");
+        System.out.println();
+    }
+
+    public static void menuListagemLivros() {
+
+        espacador();
+
+        System.out.println("=== MENU LISTAGEM LIVRO ===");
+        System.out.println();
+    }
 }

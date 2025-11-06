@@ -6,14 +6,14 @@ public class Emprestimo {
 
     private int id;
     private Livro livro;
-    private LocalDate data_emprestimo;
-    private LocalDate data_devolucao;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucao;
 
-    public Emprestimo(int id, Livro livro, LocalDate data_emprestimo, LocalDate data_devolucao) {
+    public Emprestimo(int id, Livro livro, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
         this.id = id;
         this.livro = livro;
-        this.data_emprestimo = data_emprestimo;
-        this.data_devolucao = data_devolucao;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
     }
 
     public int getId() {
@@ -32,27 +32,27 @@ public class Emprestimo {
         this.livro = livro;
     }
 
-    public LocalDate getData_emprestimo() {
-        return data_emprestimo;
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
     }
 
-    public void setData_emprestimo(LocalDate data_emprestimo) {
-        this.data_emprestimo = data_emprestimo;
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
     }
 
-    public LocalDate getData_devolucao() {
-        return data_devolucao;
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
     }
 
-    public void setData_devolucao(LocalDate data_devolucao) {
-        this.data_devolucao = data_devolucao;
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 
     @Override
     public String toString() {
         return "ID: " + id +
                 "Livro: " + livro +
-                "Data Empréstimo: " + data_emprestimo +
-                "Data Devolução: " + data_devolucao;
+                "Data Empréstimo: " + dataEmprestimo +
+                "Data Devolução: " + dataDevolucao;
     }
 }

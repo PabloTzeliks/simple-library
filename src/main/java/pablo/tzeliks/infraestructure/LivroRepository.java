@@ -5,7 +5,10 @@ import pablo.tzeliks.model.Livro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LivroRepository {
 
@@ -24,6 +27,30 @@ public class LivroRepository {
             stmt.setBoolean(4, livro.isDisponivel());
 
             stmt.executeUpdate();
+        }
+    }
+
+    public List<Livro> list() throws SQLException {
+
+        List<Livro> livros = new ArrayList<>();
+
+        String sqlListagemLivros = """
+                SELECT id, titulo, autor, ano, disponivel FROM livros;
+                """;
+
+        try (Connection conn = Conexao.conexao();
+             PreparedStatement stmt = conn.prepareStatement(sqlListagemLivros)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Livro livro = new Livro(rs.getInt("id"), rs.getString("titulo"), rs.getString("autor"), rs.getInt("ano"), rs.getBoolean("disponivel"));
+
+                livros.add(livro);
+            }
+
+            return livros;
         }
     }
 }
