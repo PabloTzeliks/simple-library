@@ -1,5 +1,7 @@
 package pablo.tzeliks.view.helper;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class InputHelper {
@@ -63,6 +65,21 @@ public class InputHelper {
             try {
                 return Double.parseDouble(input.trim());
             } catch (NumberFormatException e) {
+                MensagemHelper.erro("Valor inválido. Tente novamente!");
+            }
+        }
+    }
+
+    public static LocalDate lerLocalDate(Scanner sc, String prompt) {
+        while (true) {
+
+            System.out.println(prompt + " ");
+
+            String input = sc.nextLine();
+
+            try {
+                return LocalDate.parse(input.trim());
+            } catch (DateTimeParseException e) {
                 MensagemHelper.erro("Valor inválido. Tente novamente!");
             }
         }

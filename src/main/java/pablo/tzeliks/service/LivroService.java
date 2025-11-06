@@ -6,7 +6,6 @@ import pablo.tzeliks.view.helper.MensagemHelper;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;
 
 public class LivroService {
 

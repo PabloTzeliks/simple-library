@@ -1,5 +1,6 @@
 package pablo.tzeliks.view.menu;
 
+import pablo.tzeliks.model.Emprestimo;
 import pablo.tzeliks.model.Livro;
 import pablo.tzeliks.service.EmprestimoService;
 import pablo.tzeliks.service.LivroService;
@@ -7,6 +8,7 @@ import pablo.tzeliks.view.helper.InputHelper;
 import pablo.tzeliks.view.helper.MensagemHelper;
 import pablo.tzeliks.view.helper.MenuHelper;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,6 +22,7 @@ public class MenuRegistroEmprestimo {
         List<Livro> livros = livroService.listarLivros();
         List<Integer> livrosIds = new ArrayList<>();
         Livro livroEscolhido;
+        LocalDate dataDevolucao;
 
         // Etapa 1 - Escolher o Livro
         MenuHelper.menuListagemLivros();
@@ -52,14 +55,26 @@ public class MenuRegistroEmprestimo {
         System.out.println(livroEscolhido.toString());;
         MenuHelper.espacador();
 
-        // Etapa 2 - Efetuar empréstimo
+        // Etapa 2 - Definir data de devolução
+
+        MensagemHelper.subtitulo("Escolha da Data de Devolução");
+
+        dataDevolucao = InputHelper.lerLocalDate(sc, "Data de Devolução: ");
+
+        // Etapa 3 - Efetuar empréstimo
+
+        MensagemHelper.subtitulo("Efetuar Empréstimo");
+
         while(true) {
 
             String escolhaUsuario = InputHelper.lerString(sc, "Deseja efetuar o empréstimo? Sim: 'S' ou Não: 'N'" +
                     "\nEfetue sua escolha: ");
 
             if(escolhaUsuario.equals("S")) {
-                emprestimoService.emprestimo(livroEscolhido);
+
+                Emprestimo emprestimo = new Emprestimo(0, livroEscolhido, LocalDate.now(), dataDevolucao);
+
+                emprestimoService.emprestarLivro(emprestimo);
 
 
             }
