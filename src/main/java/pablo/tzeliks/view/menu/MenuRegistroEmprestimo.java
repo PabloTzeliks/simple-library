@@ -29,16 +29,15 @@ public class MenuRegistroEmprestimo {
 
         for(Livro livro : livros) {
 
-            MenuHelper.espacador();
-
             System.out.println(livro.toString());
+            MenuHelper.espacador();
 
             livrosIds.add(livro.getId());
         }
 
         while(true) {
 
-            int livroEscolhidoId = InputHelper.lerInt(sc, "Escolha o livro desejado (Digite o ID): ");
+            int livroEscolhidoId = InputHelper.lerInt(sc, "\nEscolha o livro desejado (Digite o ID): ");
 
             if (livrosIds.contains(livroEscolhidoId)) {
 
@@ -75,9 +74,17 @@ public class MenuRegistroEmprestimo {
                 Emprestimo emprestimo = new Emprestimo(0, livroEscolhido, LocalDate.now(), dataDevolucao);
 
                 emprestimoService.emprestarLivro(emprestimo);
+                livroService.alterarDisponibilidade(livroEscolhido);
 
+                MensagemHelper.sucesso("Empréstimo registrado com Sucesso!");
 
+                break;
+            } else if (escolhaUsuario.equals("N")) {
+
+                MensagemHelper.info("Empréstimo em andamento cancelado.");
+                break;
             }
         }
+
     }
 }

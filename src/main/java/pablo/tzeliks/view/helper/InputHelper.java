@@ -1,6 +1,7 @@
 package pablo.tzeliks.view.helper;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -78,7 +79,7 @@ public class InputHelper {
             String input = sc.nextLine();
 
             try {
-                return LocalDate.parse(input.trim());
+                return LocalDate.parse(input.trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             } catch (DateTimeParseException e) {
                 MensagemHelper.erro("Valor inválido. Tente novamente!");
             }

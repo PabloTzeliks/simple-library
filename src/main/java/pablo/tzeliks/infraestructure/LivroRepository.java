@@ -53,4 +53,20 @@ public class LivroRepository {
             return livros;
         }
     }
+
+    public void updateDisponibilidade(Livro livro) throws SQLException {
+
+        String sqlUpdateStatus = """
+                UPDATE livros SET disponivel = ? WHERE id = ?;
+                """;
+
+        try (Connection conn = Conexao.conexao();
+             PreparedStatement stmt = conn.prepareStatement(sqlUpdateStatus)) {
+
+            stmt.setBoolean(1, livro.isDisponivel());
+            stmt.setInt(2, livro.getId());
+
+            stmt.executeUpdate();
+        }
+    }
 }

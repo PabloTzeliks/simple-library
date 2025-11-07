@@ -5,6 +5,7 @@ import pablo.tzeliks.service.LivroService;
 import pablo.tzeliks.view.helper.InputHelper;
 import pablo.tzeliks.view.helper.MenuHelper;
 import pablo.tzeliks.view.menu.MenuCadastroLivro;
+import pablo.tzeliks.view.menu.MenuRegistroEmprestimo;
 
 import java.util.Scanner;
 
@@ -14,8 +15,8 @@ public class BibliotecaView {
     private LivroService livroService;
     private Scanner sc;
 
-    public BibliotecaView(LivroService livroService) {
-        // this.emprestimoService = emprestimoService;
+    public BibliotecaView(LivroService livroService, EmprestimoService emprestimoService) {
+        this.emprestimoService = emprestimoService;
         this.livroService = livroService;
         this.sc = new Scanner(System.in);
     }
@@ -33,7 +34,9 @@ public class BibliotecaView {
                 case "1":
                     MenuCadastroLivro.executarCadastro(sc, livroService);
                     break;
-
+                case "2":
+                    MenuRegistroEmprestimo.executarEmprestimo(sc, livroService, emprestimoService);
+                    break;
                 case "0":
                     System.out.println("Fim! Encerrando programa ...");
                     return;

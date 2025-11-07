@@ -59,9 +59,9 @@ public class Livro {
     @Override
     public String toString() {
         return "ID: " + id +
-                "Titulo: " + titulo +
-                "Autor: " + autor +
-                "Ano: " + ano +
-                "Disponibilidade: " + (disponivel ? "Disponível" : "Não Disponível");
+                "\nTitulo: " + titulo +
+                "\nAutor: " + autor +
+                "\nAno: " + ano +
+                "\nDisponibilidade: " + (disponivel ? "Disponível" : "Não Disponível");
     }
 }
