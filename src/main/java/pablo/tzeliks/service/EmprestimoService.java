@@ -7,6 +7,9 @@ import pablo.tzeliks.model.Livro;
 import pablo.tzeliks.view.helper.MensagemHelper;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmprestimoService {
 
@@ -18,6 +21,14 @@ public class EmprestimoService {
 
     public void emprestarLivro(Emprestimo emprestimo) {
 
+        LocalDate dataAtual =  LocalDate.now();
+
+        if (dataAtual.isEqual(emprestimo.getDataDevolucao()) || dataAtual.isAfter(emprestimo.getDataDevolucao())) {
+
+            MensagemHelper.erro("Erro na inserção da Data de Devolução, data inserida inválida.");
+            return;
+        }
+
         try {
             repository.save(emprestimo);
 
@@ -27,5 +38,28 @@ public class EmprestimoService {
 
             e.printStackTrace();
         }
+    }
+
+    public List<Emprestimo> listarEmprestimos() {
+
+        List<Emprestimo> emprestimos = new ArrayList<>();
+
+        try {
+            emprestimos = repository.list();
+s
+            if(emprestimos.isEmpty()) {
+                MensagemHelper.erro("Nenhum empréstimo encontrado!");
+            }
+
+            return emprestimos;
+
+        } catch (SQLException e) {
+
+            MensagemHelper.erro("Erro ao listar os empréstimos, observe: " + e.getMessage());
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

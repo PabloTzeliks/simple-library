@@ -42,4 +42,12 @@ public class MenuHelper {
         System.out.println("=== MENU LISTAGEM LIVRO ===");
         System.out.println();
     }
+
+    public static void menuDevolucaoLivro() {
+
+        espacador();
+
+        System.out.println("=== MENU DEVOLUÇÃO LIVRO ===");
+        System.out.println();
+    }
 }

@@ -32,7 +32,7 @@ public class EmprestimoRepository {
         List<Emprestimo> emprestimos = new ArrayList<>();
 
         String sqlListagemEmprestimos = """
-                SELECT id, livro_id, data_emprestimo, data_devolucao FROM emprestimos"
+                SELECT id, livro_id, data_emprestimo, data_devolucao FROM emprestimos;
                 """;
 
         try(Connection conn = Conexao.conexao();

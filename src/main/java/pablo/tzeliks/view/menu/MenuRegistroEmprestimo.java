@@ -76,7 +76,7 @@ public class MenuRegistroEmprestimo {
                 emprestimoService.emprestarLivro(emprestimo);
                 livroService.alterarDisponibilidade(livroEscolhido);
 
-                MensagemHelper.sucesso("Empréstimo registrado com Sucesso!");
+                MensagemHelper.sucesso("Processo finalizado com Sucesso!");
 
                 break;
             } else if (escolhaUsuario.equals("N")) {
@@ -85,6 +85,5 @@ public class MenuRegistroEmprestimo {
                 break;
             }
         }
-
     }
 }
