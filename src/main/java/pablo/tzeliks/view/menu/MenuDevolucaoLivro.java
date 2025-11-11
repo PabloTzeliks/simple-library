@@ -56,10 +56,12 @@ public class MenuDevolucaoLivro {
 
         // Etapa 2 - Validar data de devolução
 
-        if (!dataAtual.isEqual(emprestimoEscolhido.getDataDevolucao())) {
+        if (dataAtual.isAfter(emprestimoEscolhido.getDataDevolucao())) {
 
-            MensagemHelper.erro("");
+            MensagemHelper.erro("Você não pode devolver o Livro após a Data de Devolucao estipulada. Converse com um Bibliotecário para resolver a situação.");
+        } else {
+
+
         }
-
     }
 }
