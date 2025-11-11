@@ -24,7 +24,7 @@ public class MenuDevolucaoLivro {
         LocalDate dataAtual = LocalDate.now();
 
         // Etapa 1 - Escolher o Livro
-        MenuHelper.menuListagemLivros();
+        MenuHelper.menuListagemEmprestimos();
 
         for (Emprestimo emprestimo : emprestimos) {
 
@@ -57,7 +57,7 @@ public class MenuDevolucaoLivro {
 
         if (dataAtual.isAfter(emprestimoEscolhido.getDataDevolucao())) {
 
-            MensagemHelper.erro("Você não pode devolver o Livro após a Data de Devolucao estipulada. Converse com um Bibliotecário para resolver a situação.");
+            MensagemHelper.erro("Você não pode devolver o Livro após a Data de Devolução estipulada. Converse com um Bibliotecário para resolver a situação.");
         } else {
 
             devolucaoService.devolverLivro(emprestimoEscolhido);

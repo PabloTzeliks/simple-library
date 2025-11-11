@@ -72,6 +72,7 @@ public class MenuRegistroEmprestimo {
             if(escolhaUsuario.equals("S")) {
 
                 Emprestimo emprestimo = new Emprestimo(0, livroEscolhido, LocalDate.now(), dataDevolucao);
+                livroEscolhido.setDisponivel(false);
 
                 emprestimoService.emprestarLivro(emprestimo);
                 livroService.alterarDisponibilidade(livroEscolhido);

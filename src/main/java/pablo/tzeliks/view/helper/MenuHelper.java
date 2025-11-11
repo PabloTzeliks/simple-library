@@ -13,10 +13,10 @@ public class MenuHelper {
 
         System.out.println("=== MENU PRINCIPAL ===");
         System.out.println("\n1- Registrar Livro");
-        System.out.println("2- Registrar um empréstimo");
+        System.out.println("2- Registrar um Empréstimo");
         System.out.println("3- Registrar uma Devolução");
         System.out.println("4- Listar Livros");
-        System.out.println("5- Listar Emprestimos");
+        System.out.println("5- Listar Empréstimos");
     }
 
     public static void menuCadastroLivro() {
@@ -48,6 +48,12 @@ public class MenuHelper {
         espacador();
 
         System.out.println("=== MENU DEVOLUÇÃO LIVRO ===");
+        System.out.println();
+    }
+
+    public static void menuListagemEmprestimos() {
+
+        System.out.println("=== MENU LISTAGEM EMPRÉSTIMO ===");
         System.out.println();
     }
 }
