@@ -37,10 +37,7 @@ public class MenuHelper {
 
     public static void menuListagemLivros() {
 
-        espacador();
-
-        System.out.println("=== MENU LISTAGEM LIVRO ===");
-        System.out.println();
+        System.out.println("\n=== MENU LISTAGEM LIVRO ===");
     }
 
     public static void menuDevolucaoLivro() {
@@ -53,7 +50,6 @@ public class MenuHelper {
 
     public static void menuListagemEmprestimos() {
 
-        System.out.println("=== MENU LISTAGEM EMPRÉSTIMO ===");
-        System.out.println();
+        System.out.println("\n=== MENU LISTAGEM EMPRÉSTIMO ===");
     }
 }
