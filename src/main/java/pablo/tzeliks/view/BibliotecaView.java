@@ -5,10 +5,7 @@ import pablo.tzeliks.service.EmprestimoService;
 import pablo.tzeliks.service.LivroService;
 import pablo.tzeliks.view.helper.InputHelper;
 import pablo.tzeliks.view.helper.MenuHelper;
-import pablo.tzeliks.view.menu.MenuCadastroLivro;
-import pablo.tzeliks.view.menu.MenuDevolucaoLivro;
-import pablo.tzeliks.view.menu.MenuListagemLivros;
-import pablo.tzeliks.view.menu.MenuRegistroEmprestimo;
+import pablo.tzeliks.view.menu.*;
 
 import java.util.Scanner;
 
@@ -47,6 +44,9 @@ public class BibliotecaView {
                     break;
                 case "4":
                     MenuListagemLivros.executarListagem(livroService);
+                    break;
+                case "5":
+                    MenuListagemEmprestimos.executarListagem(emprestimoService);
                     break;
                 case "0":
                     System.out.println("Fim! Encerrando programa ...");

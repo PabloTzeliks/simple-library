@@ -17,6 +17,7 @@ public class MenuHelper {
         System.out.println("3- Registrar uma Devolução");
         System.out.println("4- Listar Livros");
         System.out.println("5- Listar Empréstimos");
+        System.out.println("0- Sair do Sistema");
     }
 
     public static void menuCadastroLivro() {
