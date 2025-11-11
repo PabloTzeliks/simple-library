@@ -5,7 +5,6 @@ import pablo.tzeliks.service.LivroService;
 import pablo.tzeliks.view.helper.MenuHelper;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class MenuListagemLivros {
 
