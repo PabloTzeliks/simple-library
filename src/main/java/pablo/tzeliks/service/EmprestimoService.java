@@ -1,9 +1,7 @@
 package pablo.tzeliks.service;
 
 import pablo.tzeliks.infraestructure.EmprestimoRepository;
-import pablo.tzeliks.infraestructure.LivroRepository;
 import pablo.tzeliks.model.Emprestimo;
-import pablo.tzeliks.model.Livro;
 import pablo.tzeliks.view.helper.MensagemHelper;
 
 import java.sql.SQLException;
@@ -46,7 +44,7 @@ public class EmprestimoService {
 
         try {
             emprestimos = repository.list();
-s
+
             if(emprestimos.isEmpty()) {
                 MensagemHelper.erro("Nenhum empréstimo encontrado!");
             }

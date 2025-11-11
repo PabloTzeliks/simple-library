@@ -1,9 +1,8 @@
 package pablo.tzeliks.view.menu;
 
 import pablo.tzeliks.model.Emprestimo;
-import pablo.tzeliks.model.Livro;
+import pablo.tzeliks.service.DevolucaoService;
 import pablo.tzeliks.service.EmprestimoService;
-import pablo.tzeliks.service.LivroService;
 import pablo.tzeliks.view.helper.InputHelper;
 import pablo.tzeliks.view.helper.MensagemHelper;
 import pablo.tzeliks.view.helper.MenuHelper;
@@ -15,7 +14,7 @@ import java.util.Scanner;
 
 public class MenuDevolucaoLivro {
 
-    public static void executarDevolucao(Scanner sc, LivroService livroService, EmprestimoService emprestimoService) {
+    public static void executarDevolucao(Scanner sc, EmprestimoService emprestimoService, DevolucaoService devolucaoService) {
 
         MenuHelper.menuDevolucaoLivro();
 
@@ -61,7 +60,8 @@ public class MenuDevolucaoLivro {
             MensagemHelper.erro("Você não pode devolver o Livro após a Data de Devolucao estipulada. Converse com um Bibliotecário para resolver a situação.");
         } else {
 
-
+            devolucaoService.devolverLivro(emprestimoEscolhido);
+            MensagemHelper.sucesso("Livro devolvido com Sucesso!");
         }
     }
 }

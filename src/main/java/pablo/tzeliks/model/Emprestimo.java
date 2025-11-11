@@ -51,8 +51,8 @@ public class Emprestimo {
     @Override
     public String toString() {
         return "ID: " + id +
-                "Livro: " + livro +
-                "Data Empréstimo: " + dataEmprestimo +
-                "Data Devolução: " + dataDevolucao;
+                "\nLivro ID: " + livro.getId() +
+                "\nData Empréstimo: " + dataEmprestimo +
+                "\nData Devolução: " + dataDevolucao;
     }
 }
