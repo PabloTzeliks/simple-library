@@ -1,103 +1,98 @@
 # Simple Library
 
-A simple library management project to introduce modularization concepts in the APIs programming course.
+A console-based library management system demonstrating modular Java architecture with MySQL database integration.
 
-## Overview
+## Features
 
-This project demonstrates fundamental concepts of software modularization using Java and database connectivity. It serves as an educational resource for understanding how to structure applications with clear separation of concerns and modular architecture.
+- **Book Management**: Register new books with title, author, year, and availability tracking
+- **Loan System**: Register book loans with automatic availability control and due date validation
+- **Return System**: Process book returns and restore availability
+- **List Books**: View all registered books with their details and availability status
+- **List Loans**: View all active loans with dates and associated books
 
 ## Technologies
 
-### Java
-- **Object-Oriented Programming (OOP)**: Implementation of classes, objects, inheritance, and encapsulation
-- **Package Structure**: Organizing code into logical modules
-- **Exception Handling**: Proper error management and validation
+- **Java 22**: Core application language with OOP principles
+- **JDBC**: Database connectivity and operations
+- **MySQL**: Relational database for data persistence
+- **Maven**: Dependency management and build automation
 
-### JDBC (Java Database Connectivity)
-- **Database Connection Management**: Establishing and managing connections to MySQL database
-- **CRUD Operations**: Create, Read, Update, and Delete operations
-- **Prepared Statements**: Secure SQL query execution to prevent SQL injection
-- **Result Set Processing**: Handling query results and data mapping
+## Architecture
 
-### MySQL
-- **Relational Database**: Storing and managing library data
-- **Schema Design**: Tables for books, authors, users, and transactions
-- **SQL Queries**: Data manipulation and retrieval operations
-
-## Modularization Concepts
-
-This project introduces key modularization principles:
-
-1. **Separation of Concerns**: Each module has a specific responsibility
-   - Data Access Layer: Database operations and queries
-   - Business Logic Layer: Application rules and validations
-   - Presentation Layer: User interaction and input/output
-
-2. **Loose Coupling**: Modules interact through well-defined interfaces, minimizing dependencies
-
-3. **High Cohesion**: Related functionality is grouped together within modules
-
-4. **Reusability**: Modular components can be reused across different parts of the application
-
-5. **Maintainability**: Clear structure makes the codebase easier to understand, modify, and extend
-
-## Project Structure
+The project follows a layered architecture with clear separation of concerns:
 
 ```
-simple-library/
-├── src/
-│   ├── model/             # Data models
-│   ├── service/           # Business logic layer
-│   ├── view/              # Presentation, interact directly with the user
-│   ├── infraestructure/   # Infra, abstract the persistency
-│   └── main/              # Application entry point
-└── README.md
+src/main/java/pablo/tzeliks/
+├── model/              # Domain entities (Livro, Emprestimo)
+├── service/            # Business logic (validation, orchestration)
+├── infraestructure/    # Data access layer (repositories, DB connection)
+├── view/               # Console UI (menus, input helpers)
+└── Main.java           # Application entry point
 ```
 
-## Learning Objectives
+**Design Patterns**:
+- Repository Pattern for data access
+- Dependency Injection for loose coupling
+- Service Layer for business logic isolation
 
-By exploring this project, you will learn:
+## Prerequisites
 
-- How to structure a Java application using modular design principles
-- How to connect a Java application to a MySQL database using JDBC
-- How to implement the DAO (Data Access Object) pattern for database operations
-- How to separate business logic from data access logic
-- Best practices for managing database connections and resources
-- How to write maintainable and scalable code
+- JDK 22 or higher
+- MySQL Server 8.0+
+- Maven 3.6+
 
-## Getting Started
+## Database Setup
 
-*Note: This is an initial version of the project. Complete setup instructions and implementation details will be added as the project develops.*
+Create the database and tables:
 
-### Prerequisites
+```sql
+CREATE DATABASE sql_db;
+USE sql_db;
 
-- Java Development Kit (JDK) 8 or higher
-- MySQL Server
-- JDBC Driver for MySQL
+CREATE TABLE livros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(255) NOT NULL,
+    ano INT NOT NULL,
+    disponivel BOOLEAN DEFAULT TRUE
+);
 
-### Database Setup
+CREATE TABLE emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    livro_id INT NOT NULL,
+    data_emprestimo DATE NOT NULL,
+    data_devolucao DATE NOT NULL,
+    FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+```
 
-Instructions for database schema creation will be provided in the next version.
+Update database credentials in `src/main/java/pablo/tzeliks/infraestructure/Conn/Conexao.java`:
 
-## Future Development
+```java
+private static final String URL = "jdbc:mysql://localhost:3306/sql_db";
+private static final String User = "your_username";
+private static final String Passwd = "your_password";
+```
 
-This README represents the initial version of the project. As development progresses:
+## Running the Application
 
-- Complete implementation of all modules
-- Detailed setup and installation instructions
-- Usage examples and code snippets
-- Database schema documentation
-- Testing guidelines
-- Contributing guidelines
+```bash
+mvn clean compile
+mvn exec:java -Dexec.mainClass="pablo.tzeliks.Main"
+```
 
-## Status
+## Usage
 
-🚧 **Project in Progress** - This is the initial version. Code implementation is ongoing.
+The application provides an interactive console menu:
+
+1. **Register Book**: Add new books to the library
+2. **Register Loan**: Create a loan for an available book
+3. **Register Return**: Process book returns
+4. **List Books**: Display all books and their availability
+5. **List Loans**: Show all registered loans
 
 ---
 
-*This project is part of an APIs programming course focusing on modularization concepts.*
+*Educational project demonstrating modularization concepts in Java*
 
-## Author
-
-**Pablo Tzeliks** ([@PabloTzeliks](https://github.com/PabloTzeliks))
+**Author**: Pablo Tzeliks ([@PabloTzeliks](https://github.com/PabloTzeliks))
